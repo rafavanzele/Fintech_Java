@@ -26,10 +26,6 @@ public class Despesa {
         System.out.println("Valor da despesa (R$): " + valor);
     }
 
-    public void addDespesa(double novaDespesa) {
-        valor += novaDespesa;
-        System.out.println("Despesa adicionada com sucesso! O novo total das despesas é: R$" + valor);
-    }
 
 
 }

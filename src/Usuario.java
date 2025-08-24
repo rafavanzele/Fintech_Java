@@ -5,6 +5,8 @@ public class Usuario {
 
     String email;
 
+    Conta conta;
+
 
     //Construtores
     public Usuario(String nome, String email) {

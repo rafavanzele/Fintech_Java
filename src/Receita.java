@@ -27,8 +27,4 @@ public class Receita {
     }
 
 
-    public void addReceita(double novaReceita) {
-        valor += novaReceita;
-        System.out.println("Receita adicionada com sucesso! Seu novo montante é: R$" + valor);
-    }
 }
