@@ -70,8 +70,7 @@ public class Main {
 
         } while(opt != 0);
 
-
-
+        sc.close();
 
 
         }
