@@ -1,3 +1,7 @@
+package br.com.fiap.meufintech.main;
+
+import br.com.fiap.meufintech.model.*;
+
 import java.util.Scanner;
 
 public class Main {
@@ -17,6 +21,7 @@ public class Main {
             System.out.println("[3] Adicionar receita");
             System.out.println("[4] Adicionar despesa");
             System.out.println("[5] Detalhes conta");
+            System.out.println("[6] Renovar tentativa");
             System.out.println("[0] Sair");
             System.out.print("Escolha uma opção: ");
             opt = sc.nextInt();
@@ -24,13 +29,27 @@ public class Main {
 
             switch (opt) {
                 case 1:
+                    System.out.println("Escolha um perfil de conta: \n[1] br.com.fiap.meufintech.model.Conta Normal \n [2]br.com.fiap.meufintech.model.Conta VIP.");
+                    int escolhaConta = sc.nextInt();
+                    while (escolhaConta != 1 && escolhaConta != 2) {
+                        System.out.println("Opção inválida!");
+                        System.out.println("Escolha um perfil de conta: \n[1] br.com.fiap.meufintech.model.Conta Normal \n [2]br.com.fiap.meufintech.model.Conta VIP.");
+                        escolhaConta = sc.nextInt();
+                    }
+
                     System.out.print("Nome do usuário: ");
                     String nome = sc.next() + sc.nextLine();
                     System.out.print("Email: ");
                     String email = sc.next() + sc.nextLine();
                     usuario = new Usuario(nome, email);
-                    conta = new Conta(idConta, usuario);
-                    usuario.conta = conta;
+
+                    if (escolhaConta == 1) {
+                        conta = new ContaNormal(idConta, usuario);
+                    } else {
+                        conta = new ContaVip(idConta, usuario);
+                    }
+
+                    usuario.setConta(conta);
                     break;
                 case 2:
                     System.out.println("Saldo da conta: ");
@@ -61,6 +80,11 @@ public class Main {
                 case 5:
                     System.out.println("Detalhes da conta:");
                     conta.detalheConta();
+                    break;
+                case 6:
+                    System.out.println("Quantas novas tentativas você gostaria de obter?");
+                    int tentativa = sc.nextInt();
+                    conta.renovarConta(tentativa);
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente");
